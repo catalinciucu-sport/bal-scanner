@@ -13,7 +13,7 @@
   .top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:#cbd5e1;margin-bottom:10px}
   .top b{color:#fff;font-size:15px}
   .card{border-radius:18px;padding:22px 16px;text-align:center}
-  .ok{background:#16a34a}.warn{background:#f59e0b;color:#1f2937}.bad{background:#dc2626}.auth{background:#475569}
+  .ok{background:#16a34a}.warn{background:#f59e0b;color:#1f2937}.bad{background:#dc2626}.auth{background:#475569}.org{background:#7c3aed}
   .title{font-size:26px;font-weight:800;line-height:1.15}
   .seat{font-size:32px;font-weight:800;margin-top:12px}
   .line{font-size:19px;margin-top:6px;font-weight:600}
@@ -257,7 +257,7 @@ function renderRes(r){
   busy = false;
   if (r.kind === 'auth' && !r.noauth) { toLogin(r.note); return; }
   beep(r.kind === 'ok' ? 'ok' : (r.kind === 'warn' ? 'warn' : 'bad'));
-  var h = '<div class="card ' + esc(r.kind) + '"><div class="title">' + esc(r.title) + '</div>';
+  var h = '<div class="card ' + esc(r.org && r.kind === 'ok' ? 'org' : r.kind) + '"><div class="title">' + esc(r.title) + '</div>';
   if (r.seat) h += '<div class="seat">' + esc(r.seat) + '</div>';
   if (r.clasa) h += '<div class="line">' + esc(r.clasa) + (r.zona ? ' · ' + esc(r.zona) : '') + '</div>';
   if (r.buyer) h += '<div class="line" style="font-size:15px">' + esc(r.buyer) + '</div>';
